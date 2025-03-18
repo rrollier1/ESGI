@@ -1,3 +1,5 @@
-$Path = Read-Host "Saisissez le chemin vers le dossier a purger!"
-#bug 27
-Get-ChildItem -Path $path -Recurse -Force | Where-Object{ !$_.PSIsContainer -and $_. CreationTime -lt (Get-Date).AddDays(-15) } | Remove-Item -Force
+while ($true) {
+    Supprimer-FichiersTemporaires -dossier $tempFolder
+    # Attendre 15 jours (en secondes)
+    Start-Sleep -Seconds (15 * 24 * 60 * 60)
+} 
