@@ -1,1 +1,3 @@
-$Path = Read-Host "Saisissez le chemin vers le dossier a nettoyer"
+$Path = Read-Host "Saisissez le chemin vers le dossier a purger!"
+#bug
+Get-ChildItem -Path $path -Recurse -Force | Where-Object{ !$_.PSIsContainer -and $_. CreationTime -lt (Get-Date).AddDays(-15) } | Remove-Item -Force
